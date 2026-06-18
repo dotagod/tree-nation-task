@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X Visits = 1 Tree</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>X Visits = 1 Tree</h1>
+      <p class="subtitle">Dashboard for shop visit events and tree planting</p>
+    </header>
+
+    <section class="meta">
+      <p>Default visits per tree: <strong id="visits-per-tree">—</strong></p>
+      <p>Hourly window: <strong id="hourly-window">—</strong></p>
+      <p class="updated">Last updated: <span id="last-updated">—</span></p>
+    </section>
+
+    <section class="table-section">
+      <h2>Hourly visits</h2>
+      <p class="section-note">
+        Last <span id="hourly-hours-label">24</span> hours in UTC. One row per customer per hour.
+        Visits outside this window are not listed here.
+      </p>
+      <div class="table-wrapper">
+        <table class="data-table" aria-label="Hourly visits by customer">
+          <thead>
+            <tr>
+              <th scope="col">Hour (UTC)</th>
+              <th scope="col">Customer ID</th>
+              <th scope="col" class="numeric">Visits this hour</th>
+            </tr>
+          </thead>
+          <tbody id="visits-table-body"></tbody>
+          <tfoot>
+            <tr class="table-total">
+              <th scope="row" colspan="2">Total visits in window</th>
+              <td id="hourly-total-visits" class="numeric">—</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section class="table-section">
+      <h2>Customer totals</h2>
+      <p class="section-note">
+        Lifetime totals since the server started. Compare
+        <strong>Visits (last 24h)</strong> with the hourly table above;
+        <strong>Total visits (all time)</strong> also includes older visits.
+      </p>
+      <div class="table-wrapper">
+        <table class="data-table" aria-label="Customer tree totals">
+          <thead>
+            <tr>
+              <th scope="col">Customer ID</th>
+              <th scope="col" class="numeric">Visits (last 24h)</th>
+              <th scope="col" class="numeric">Total visits (all time)</th>
+              <th scope="col" class="numeric">Progress to next tree</th>
+              <th scope="col" class="numeric">Trees planted</th>
+            </tr>
+          </thead>
+          <tbody id="customers-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="table-section">
+      <h2>Tree planting history</h2>
+      <div class="table-wrapper">
+        <table class="data-table" aria-label="Tree planting audit trail">
+          <thead>
+            <tr>
+              <th scope="col">Planted at (UTC)</th>
+              <th scope="col">Customer ID</th>
+              <th scope="col" class="numeric">Visits per tree</th>
+            </tr>
+          </thead>
+          <tbody id="tree-events-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
