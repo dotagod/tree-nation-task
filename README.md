@@ -1,4 +1,4 @@
-# X Visits = 1 Tree
+# Visit Tracker 
 
 A small web service that receives shop visit events from a physical device, tracks per-customer visits and trees planted, and exposes a dashboard with hourly visit aggregation.
 
